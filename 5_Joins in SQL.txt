@@ -1,0 +1,44 @@
+In SQL , a JOIN clause is used to return a reuslts set which combines data from multiple tables,
+based on a common column which is featured in both of them
+
+There are a number of different joins available for you to use:
+
+1. Inner Join (Default): Returns any records which have matching values in both tables
+2.Left Join: Returns all of the records from the first table, along with any matching records from the second table
+
+3. Right Join: Returns all of the record from the second table, along with any matching records from the first
+
+4. Full Join: Returns all records from both tables when there ia a match
+
+SELECT orders.id, users.first_name, users.surname, products.name as 'product name' 
+FROM orders
+INNER JOIN users on orders.user_id  = users.id
+INNER JOIN products on orders.product_id = products.id;
+
+
+VIEW
+
+A view is essentially a SQL results set that get stored in the database under a label, so you can return to it later, without having to rerun the query.
+These are especially useful when you have a costly SQL query which may be needed a number of times, so instead of running it over and over to generate the same results set, you can just do it once and save it as a view.
+
+	Creating Views
+
+              CREATE VIEW priority_users AS
+              SELECT * FROM users
+             WHERE country = 'United Kingdom';
+    
+                 Then in future, if you need to access the stored result set, you can do so like this:
+              SELECT * FROM [priority_users];
+
+
+Replacing Views
+
+CREATE OR REPLACE VIEW [priority_users]  AS
+SELECT * FROM users
+WHERE country = 'United Kingdom' OR country='USA' ;
+
+Deleting Views
+
+To delerte a view, simply use the DROP VIEW command
+
+DROP VIEW priority_users;
