@@ -1,0 +1,18 @@
+1. SELECT * FROM users;
+USING this SELECT statement , the query selects all data from all columns in the user's table
+
+2. SELCT first_name, last_name FROM users;
+Only data from these two columns would be returned from the query table
+
+3. SELECT * FROM products WHERE stcok_count <= 10 ORDER BY stock_count ASC;
+This query would return all data from the products table with a  stock_count value of less than 10 in its results set. The use of the ORDER By keyword means the results will be ordered using the stock_count column , lowest to highest
+
+4.Using the INSERT INTO statement we can add new data to a table. Here's a basic example adding a new user to the users table
+INSERT INTO users (first_name, last_name, address, email)
+VALUES ('Tester', 'Jester', '123 Fake Street, Sheffield, United Kingdom', 'test@lukeharrison.dev');
+
+SQL is the language It outlines syntax that allows you to write queries that manage relational databases. Nothing more.
+MySQL meanwhile is a database system that runs on a server. It implements the SQL language, allowing you to write queries using its syntax to manage MySQL databases.
+
+In addition to MySQL, there are other systems that implements SQL. Some of the more popular ones include PostgreSQL , SQLite, Oracle Database
+Microsoft SQL Server.
