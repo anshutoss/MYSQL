@@ -1,0 +1,53 @@
+We can download MySQL from MySQL Website
+Keywords
+
+Keyword                 Description
+
+ADD                 Adds a new column to an existing table.
+Example: Adds a new column to an existing table.
+         Adds a new column named 'email_address' to a table named 'users'
+            ALTER TABLE users
+            ADD email_address varchar(255);
+
+ADD
+CONSTRAINT         It creates a new constraint on an existing table, which is used to specify rules for any data in the table.
+              Adds a new PRIMARY KEY constraint named 'user' on columns ID and SURNAME.
+
+              ALTER TABLE users
+              ADD CONSTRAINT user PRIMARY KEY (ID, SURNAME);
+ALTER TABLE        ALTER TABLE deals
+                   ADD approved boolean;
+
+             Deletes the 'approved' column from the 'deals' table
+                ALTER TABLE deals
+                DROP COLUMN approved;
+
+
+ALTER COLUMN        Changes the data type of a table's column.
+                    Example In the users table, make the column 'incept_date' into a 'datetime'type.
+                    ALTER TABLE users
+                    ALTER COLUMN incept_date datetime;
+
+ALL      Returns true if all the subquery values meet the passed condition.
+          Example: Returns events located in London, United Kingdom
+            SELECT  * FROM events
+           WHERE host_country='United Kingdom' AND host_city='London';
+
+AND           Used to join separate conditions within a WHERE clause. Example 
+              SELECT * FROM events
+              WHERE host_country='United Kingdom' AND host_city='London';
+
+ANY                  Returns true if any of the subquery values meet the given condition.
+                   Example
+                      SELECT name
+                      FROM products
+                      WHERE productId = ANY (SELECT productId FROM orders WHERE
+                       quantity > 5);
+
+AS                 Renames a table or column with an alias value which only exists for the duration of he query.
+                     Example Aliases north_east_user_subscriptions AS ne_subs
+                      FROM users
+                     WHERE ne_subs > 5;
+
+
+ASC                Used with ORDER BY to return the data in ascending order.
