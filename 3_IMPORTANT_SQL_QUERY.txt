@@ -1,0 +1,103 @@
+1. BETWEEN : Selects stock with a quantity between 100 and 150
+SELECT * FROM stock
+WHERE quantity BETWEEN 100 AND 150;
+
+SELCT * FROM stock
+WHERE quantity NOT BETWEEN 100 AND 150;
+
+
+CASE :         Change query output depending on conditions. 
+              Example: Returns users and their subscriptions, along with a new column called activity_levels
+
+BETWEEN  :-    SELECT * FROM stock
+               WHERE quantity BETWEEN 100 AND 150;
+
+                SELECT * FROM stock
+                 WHERE quantity NOT BETWEEN 100 AND 150;
+
+CASE:- Change query output depending on conditions
+Example: Returns users annd their subscriptions, along with a new column called activity_levels that makes a judgement based on the number of subscriptions
+
+SELECT first_name, surname, subscriptions
+CASE WHEN subscriptions > 10 THEN 'Very active'
+WHEN Quantity BETWEEN 3 AND 10 THEN 'Active'
+ELSE 'Inactive'
+END AS activity_levels
+FROM users;
+
+
+
+CHECK
+            CREATE TABLE 	users (
+            first_name varchar(255),
+          age int,
+       CHECK (age>=18)
+        );
+
+Example 2(MySQL) Adds a check after  the table has already been created
+
+ALTER TABLE users
+ADD CHECK (age>=18);
+
+
+CREATE DATABASE :
+    Creates a new database
+      Example: Creates a new database named 'websitesetup'
+      CREATE DATABASE websiteup;
+
+
+
+CREATE TABLE :
+                  CREATE TABLE users (
+                  id int,
+                  first_name varchar(255),
+                  surname varchar(255),
+                  address varchar(255)
+                 contact_number int
+                   );
+
+
+DEFAULT   :                  CREATE TABLE products (
+                            id int,
+                            name varchar(255) DEFAULT 'Placeholder Name',
+                            available_from date DEFAULT GETDATE()
+                               );
+
+                      ALTER TABLE products
+                     ALTER name SET DEFAULT 'Placeholder Name',
+                      ALTER available_from SET DEFAULT GETDATE();
+
+
+DELETE Delete data from a table
+Example   : Removes a user with a user_id = 674;
+
+DESC       :    Used with ORDER BY to return the data in descending order.
+          
+
+
+
+DROP COLUMN :Deletes a column from a table
+                 ALTER TABLE users
+                 DROP COLUMN first_name
+
+DROP DATABASE       : Deletes the entire database
+                      Drop DATABASE websitesetup;
+
+DROP DEAFULT   :           Removes a default value for a column 
+                         ALTER TABLE products
+                         ALTER COLUMN name DROP DEFAULT;
+
+DROP TABLE        :        Deletes a table from a database
+                           Examples: Removes the users table
+
+EXISTS:                  Checks for the existence of any record within the subquery , returning true if one or more records are returned
+                       SELECT dealership_name
+                       FROM dealerships
+                     WHERE EXIXTX (SELECT deal_name FROM deals WHERE dealership_id = deals.dealership_id AND finance_percenatge < 10);
+
+FROM    :             Specifis which table to select otr delete data from
+                     SELECT are_manager
+                     FROM area_managers
+                     WHERE EXISTS (SELECT ProductName FROM Products WHERE
+                     are_manager_id = deals.are_manager_id AND Price < 20);
+
