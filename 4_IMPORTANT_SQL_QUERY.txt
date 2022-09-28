@@ -1,0 +1,119 @@
+1. IN :- Used alongside  a WHERE clause as a shorthand for multiple OR conditions
+So instead of
+
+SELECT * FROM users
+WHERE country = 'USA' OR country = 'United Kingdom' OR
+ country = 'Russia' OR country = 'Australia';
+
+SEELCT * FROM users
+WHERE country IN ('USA'. 'United Kingdom', 'Russia', 'Australia');
+
+Add new rows to a table
+Example Adds a new vehicle
+
+INSERT INTO   cars (make, model, mileage, year)
+VALUES ('Audi', 'A3', 3000, 2016);
+
+ISNULL:
+   Tests for empty(NULL)  values.
+   Example: Returns users that haven't given a contact number.
+   SEELCT * FROM users
+   WHERE contact_number IS NULL;
+
+
+IS NOT NULL : The reverse of NULL. Tests for values that are'nt empty/ NULL.
+
+LIKE: Returns true if operand value matches a pattern
+       Return true if the user's first_name ends with 'son'.
+        SELECT * FROM users
+         WHERE first_name LIKE '%son';
+
+
+NOT :- Returns true if a record DOEN'T meet the condition.
+      Example : Returns true if the user's first_name doesn't end with 'son'
+      SELECT * FROM users
+       WHERE first_name NOT LIKE '%son';
+
+OR   Used alongside WHERE to include data when either condition is true.
+     Example: Returns users that live in either Sheffield or Manchester.
+        SELECT * FROM users
+       WHERE city = 'Sheffield' OR 'Manchester';
+ORDER BY  :  Used to sort the result data in ascending(default) or descending order
+            through the use of ASC or DESC keywords.
+           Example : Returns countries in alphabetical orer
+           SELECT * FROM countries
+          ORDER BY name;
+
+ROWNUM : Returns results where the row number meets the passed condition.
+        Example: Returns the top 10 countries from the countries table.
+        SELECT * FROM countries
+        WHERE ROWNUM <= 10;
+
+SELECT   Used to select data from a database, which is then returned in a results set
+          SELECT * FROM users;
+          Example 2: Selects the first_name and surname columns
+          from all users.xx
+
+SELECT first_name, surname FROM users;
+
+
+SELECT DISTINCT  Sames as SELECT, except duplicate values are excluded.
+                 SELECT * INTO usersBackup2020
+                 FROM  users;
+
+
+SELECT INTO   : Copies data from one table and inserts it into another
+                Example: Returns all countries from the users table, removing any duplicate values(which would be highly likely)
+
+                 SELECT DISTINCT country from users;
+
+SELECT TOP : Allows you to return a set number of records to return from the table
+             SELECT TOP 3 * FROM cars;
+
+SET       : Used alongside UPDATE to update existing data in a table
+              Example: Updates the values and quantity values for an order with an id of 642 in the orders table
+            UPDATE orders
+           SET value = 19.49, quantity = 2
+             WHERE id = 642;
+
+SOME :              Identical to ANY
+
+TOP :         Similar to DROP, but instead of deleting the table and its data, this deletes only the data
+          Example: Empties the sessions table, but leaves the table itself intact.
+          TRUNCATE TABLE sessions;
+
+UNION  :   Combines the results from 2 or more SELET statements and returns only distinct values.
+            Example: Returns the cities from the events and subscribers tables.
+ 
+
+            SELECT city FROM events
+            UNION
+            SELECT city from subscribers;
+
+UNION ALL : The same as UNION, but includes duplicate values.
+
+UNIQUE:               Example 1(MySQL) Adds a unique constraint to the id column when a new users table.
+                    CREATE TABLE users (
+                    id int NOT NULL, 
+                  name varchar(255) NOT NULL,
+                 UNIQUE (id)
+ );
+
+               ALTER TABLE users
+               	ADD UNIQUE (id);
+
+UPDATE :          Updates existing data in a table.
+                 Example: Updates the mileage and serviceDue values for an vehicle with an id of 45 in the cars table.
+                   
+                 UPDATE cars
+                  SET mileage = 23500, serviceDue = 0
+                  WHERE id = 45;
+
+VALUES = Used alongside the INSERT INTO keyword to add new values to a table.
+            INSERT INTO cars (name, model, year)
+            VALUES ('Ford', 'Fiesta', 2010);
+
+WHERE :    Filter results to include data which meets the given condition 
+          Example: Returns orders with a quantity of mor ethan 1 item
+                SELECT * FROM orders
+               WHERE quantity > 1;
